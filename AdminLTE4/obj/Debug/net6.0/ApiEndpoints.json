@@ -1,8 +1,8 @@
 [
   {
-    "ContainingType": "FILog.Controllers.QualityInspectionApiController",
-    "Method": "GetAll",
-    "RelativePath": "QualityInspection/ReadData",
+    "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "GetCustomers",
+    "RelativePath": "ShipmentLog/GetCustomers",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -10,16 +10,163 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FILog.Controllers.QualityInspectionApiController",
-    "Method": "GetMaterialByOrderNumber",
-    "RelativePath": "QualityInspectionApi/GetByOrder/{orderNumber}",
+    "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "GetAllShipmentLog",
+    "RelativePath": "ShipmentLog/ReadData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "GetWeightSums",
+    "RelativePath": "ShipmentLog/SumWeights",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "orderNumber",
+        "Name": "customer",
         "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "Method": "CreateData",
+    "RelativePath": "ShipmentPlan/CreateData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "WeeklyShipPlan.Models.WeeklyShipPlanModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "Method": "Delete",
+    "RelativePath": "ShipmentPlan/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "Method": "ExportExcel",
+    "RelativePath": "ShipmentPlan/ExportExcel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "Method": "GetById",
+    "RelativePath": "ShipmentPlan/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "Method": "ImportExcel",
+    "RelativePath": "ShipmentPlan/ImportExcel",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FILog.Models.ImportRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "ImportExcel",
+    "RelativePath": "ShipmentPlan/ImportExcelMonthly",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FILog.Models.ImportRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "Method": "PreviewExcel",
+    "RelativePath": "ShipmentPlan/PreviewExcel",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "Method": "GetAll",
+    "RelativePath": "ShipmentPlan/ReadData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "Method": "Update",
+    "RelativePath": "ShipmentPlan/Update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedData",
+        "Type": "WeeklyShipPlan.Models.WeeklyShipPlanModel",
         "IsRequired": true
       }
     ],

@@ -1,0 +1,12 @@
+﻿body {
+}
+
+.card {
+    border: none !important;
+    border-radius: 4px !important;
+}
+
+.table th {
+    white-space: nowrap !important;
+    text-align: center !important;
+}

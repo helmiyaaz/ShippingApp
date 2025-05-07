@@ -1,0 +1,94 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" href="~/css/Shipment.css">
+
+@await Html.PartialAsync("_ShipmentCompletionTabs")
+<div class="card">
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <p class="fw-bold">Input Remarks Column with Delivery Note Number (Nomor Surat Jalan)</p>
+            </div>
+            <div class="col-md-6 text-end">
+                <button class="btn btn-secondary">Refresh</button>
+            </div>
+        </div>
+
+        <div class="row mb-3 align-items-end">
+            <div class="col-md-6">
+                <label for="customer" class="form-label">Customer:</label>
+                <select id="customer" class="form-select">
+                    <option selected>Choose...</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="shipment" class="form-label">Shipment#:</label>
+                <input type="text" id="shipment" class="form-control">
+            </div>
+            <div class="col-md-4 text-end">
+                <button class="btn btn-secondary me-2">Update</button>
+                <button class="btn btn-secondary">Surat Jalan</button>
+            </div>
+        </div>
+
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Doc#</th>
+                    <th>Customer</th>
+                    <th>PO</th>
+                    <th>SO</th>
+                    <th>Line</th>
+                    <th>Part#</th>
+                    <th>Description</th>
+                    <th>Qty</th>
+                    <th>Batch#</th>
+                    <th>DN</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4931</td>
+                    <td>21242</td>
+                    <td>60457784</td>
+                    <td>40</td>
+                    <td>ST-169099 CIM</td>
+                    <td>Spool</td>
+                    <td>5</td>
+                    <td>PDD66290</td>
+                    <td>406811108</td>
+                    <td>HTS-86, 171739578</td>
+                </tr>
+                <tr>
+                    <td>4932</td>
+                    <td>21242</td>
+                    <td>60457784</td>
+                    <td>60</td>
+                    <td>ST-170390 CIM</td>
+                    <td>Spool</td>
+                    <td>20</td>
+                    <td>PDD66291</td>
+                    <td>406811102</td>
+                    <td>HTS-86, 171739579</td>
+                </tr>
+                <tr>
+                    <td>5399</td>
+                    <td>23932</td>
+                    <td>60471034</td>
+                    <td>20</td>
+                    <td>ST-169101 CIM</td>
+                    <td>Flexure Tube</td>
+                    <td>10</td>
+                    <td>PDD66288</td>
+                    <td>407175353</td>
+                    <td>HTV-14, 17226326</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,59 @@
+﻿
+
+.container {
+    padding: 4px;
+    width: 100%;
+}
+
+/*.btn{
+    width: 9%;
+    height: 2%;
+    margin-right: 1%;
+}*/
+
+.table th {
+    white-space: nowrap !important;
+    text-align: center !important;
+}
+
+.form-label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-control, .form-select {
+    font-size: 14px;
+    padding: 5px;
+}
+
+.form-check-input{
+    border-inline-color: black;
+}
+
+
+
+.card {
+    border: none !important;
+    border-radius: 0!important;
+}
+
+
+
+.summary-container {
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.left-section, .right-section {
+    display: flex;
+    gap: 15px;
+}
+
+.total-cost {
+    font-weight: bold;
+}

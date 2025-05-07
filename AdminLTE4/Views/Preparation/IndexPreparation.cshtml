@@ -1,0 +1,369 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" href="~/css/Shipment.css">
+
+
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+        <!-- Sisi Kiri -->
+        <div class="col-md-7">
+            <!-- Form Input Delivery Point -->
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label class="form-label col-form-label-sm">Delivery Point:</label>
+                    <select class="form-select form-select-sm">
+                        <option>Choose...</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label col-form-label-sm">Lot #</label>
+                    <input type="text" class="form-control form-control-sm">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label col-form-label-sm">Total Gross Weight:</label>
+                    <input type="text" class="form-control form-control-sm" value="0 kg">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label col-form-label-sm">CoS ($):</label>
+                    <input type="text" class="form-control form-control-sm highlight-yellow" value="0">
+                </div>
+            </div>
+
+            <!-- Search Part & Order Information -->
+            <div class="row">
+                <!-- Search Part (Kiri) -->
+                    <div class="col-md-5 border p-2">
+                    <h6>Search Part</h6>
+                    <div class="row mb-2">
+                        <h6>Ctn Setting</h6>
+                            <div class="col-md-4">
+                                <select class="form-select form-select-sm">
+                                    <option>Choose...</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control form-control-sm">
+                            </div>
+                            <div class="col-md-4">
+                            <button class="btn btn-secondary btn-sm w-60" disabled>Confirm</button>
+                            </div>
+                    </div>
+                        <div class="row mb-2">
+                            <div class="col-md-7 d-flex align-items-center">
+                                <label class="form-label col-form-label-sm me-2" style="width: 100px;">Std Bin Loc:</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-5 d-flex align-items-center">
+                                <label class="form-label col-form-label-sm me-2" style="width: 100px;">Stock:</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-10">
+                                <input type="text" class="form-control form-control-sm">
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-secondary btn-sm w-40" disabled>
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-6 d-flex align-items-center">
+                                <label class="form-label col-form-label-sm me-2" style="width: 80px;">Batch#:</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-6 d-flex align-items-center">
+                                <label class="form-label col-form-label-sm me-2" style="width: 80px;">Ord#:</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-6 d-flex align-items-center">
+                                <label class="form-label col-form-label-sm me-2" style="width: 80px;">Batch#:</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-6 d-flex align-items-center">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Split
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-8 d-flex align-items-center">
+                                <label class="form-label col-form-label-sm me-2" style="width: 80px;">Ord#:</label>
+                                <input type="text" class="form-control form-control-sm">
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-secondary btn-sm w-40">Confirm</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                <!-- Order Information (Kanan) -->
+                    <div class="col-md-7 border p-2">
+                        <h6>Order Information</h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row mb-2">
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 80px;">SO#:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 80px;">Line:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 80px;">PO#:</label>
+                                        <input type="text" class="form-control me-2">
+                                        <input type="text" class="form-control me-2">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 80px;">Customer#:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 80px;">Part#:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 80px;">Description:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 40px;">Open Qty:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 40px;">Price/each:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 40px;">Cost/Each:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 40px;">Weight/Each:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 40px;">Serialized:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 40px;">Batch Size:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 250px;">Start Ship Date:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 250px;">Last Ship Date:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 250px;">Cust Req Date:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 250px;">Plan Ship Date:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 250px;">Week:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 250px;">Ship Mode:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 250px;">PO Rev:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12 d-flex align-items-center">
+                                        <label class="form-label col-form-label-sm me-2" style="width: 250px;">Qty Available:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Tabel di Sisi Kiri -->
+            <div class="mt-2">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="options">
+                                <label class="form-check-label">Picked Only</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="options">
+                                <label class="form-check-label">Based On Part Number</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="options">
+                                <label class="form-check-label">All Open List</label>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-secondary btn-sm">Mass CoC request</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Outer #</th>
+                                    <th>Part #</th>
+                                    <th>Description</th>
+                                    <th>Qty</th>
+                                    <th>Batch#</th>
+                                    <th>Customer</th>
+                                    <th>SO#</th>
+                                    <th>Line</th>
+                                    <th>PO#</th>
+                                    <th>Line</th>
+                                    <th>Dlv Point</th>
+                                    <th>ID</th>
+                                    <th>SSD</th>
+                                    <th>LSD</th>
+                                    <th>CRD</th>
+                                    <th>PSD</th>
+                                    <th>Week</th>
+                                    <th>COS</th>
+                                    <th>Ttl COS</th>
+                                    <th>Price</th>
+                                    <th>Ttl Price</th>
+                                    <th>Weight</th>
+                                    <th>Ttl Weight</th>
+                                    <th>Mode</th>
+                                    <th>Shipper</th>
+                                    <th>Shipper</th>
+                                    <th>Remarks</th>
+                                    <th>Doc#</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted">No Data</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+            </div>
+
+        </div>
+
+        <!-- Sisi Kanan -->
+        <div class="col-md-5">
+            <h6>Open Order List</h6>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Part Number</th>
+                        <th>Qty</th>
+                        <th>Ship Plan</th>
+                        <th>OTS Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4" class="text-center text-muted">No Data</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h6 class="mt-3">Open Order by Part Number</h6>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>SO</th>
+                        <th>Line</th>
+                        <th>Part #</th>
+                        <th>Qty</th>
+                        <th>Plan Ship</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5" class="text-center text-muted">No Data</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                    <div class="row mb-2">
+                        <h6>CoS Information (USD)</h6>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <label class="form-label col-form-label-sm me-2" style="width: 80px;">Weekly Target:</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <label class="form-label col-form-label-sm me-2" style="width: 120px;">Balance to prepare:</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-6 d-flex align-items-center">
+                            <label class="form-label col-form-label-sm me-2" style="width: 80px;">Shipped:</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-6 d-flex align-items-center">
+                            <label class="form-label col-form-label-sm me-2" style="width: 80px;">Prepared:</label>
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+   </div>
+</div>
+

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Collins\\FIlog\\AdminLTE4\\FILog.csproj": {}
+    "D:\\Collins\\Shiping\\AdminLTE4\\FILog.csproj": {}
   },
   "projects": {
-    "D:\\Collins\\FIlog\\AdminLTE4\\FILog.csproj": {
+    "D:\\Collins\\Shiping\\AdminLTE4\\FILog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Collins\\FIlog\\AdminLTE4\\FILog.csproj",
+        "projectUniqueName": "D:\\Collins\\Shiping\\AdminLTE4\\FILog.csproj",
         "projectName": "FILog",
-        "projectPath": "D:\\Collins\\FIlog\\AdminLTE4\\FILog.csproj",
-        "packagesPath": "C:\\Users\\M Nalendra Z\\.nuget\\packages\\",
-        "outputPath": "D:\\Collins\\FIlog\\AdminLTE4\\obj\\",
+        "projectPath": "D:\\Collins\\Shiping\\AdminLTE4\\FILog.csproj",
+        "packagesPath": "C:\\Users\\HELMIYA AZAHRA\\.nuget\\packages\\",
+        "outputPath": "D:\\Collins\\Shiping\\AdminLTE4\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\M Nalendra Z\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HELMIYA AZAHRA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -51,6 +51,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "EPPlus": {
+              "target": "Package",
+              "version": "[6.2.19, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.36, )"

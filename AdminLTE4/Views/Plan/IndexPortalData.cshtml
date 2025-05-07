@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" href="~/css/PortalData.css">
+
+
+    @await Html.PartialAsync("_ShipmentPlanTabs")
+
+
+<div class="container mt-3">
+    <!-- Filter Section -->
+    <div class="container-box">
+        <h6>Filter</h6>
+        <div class="row">
+            <div class="col-md-3">
+                <label class="form-label">Part Number:</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">PO#:</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Customer:</label>
+                <select class="form-select">
+                    <option selected>Pilih...</option>
+                    <option value="1">Customer 1</option>
+                    <option value="2">Customer 2</option>
+                </select>
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <button class="btn btn-primary me-2">Search</button>
+                <button class="btn btn-secondary me-2">Clear Filter</button>
+                <button class="btn btn-success">Excel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="grey-box">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr class="table-dark">
+                    <th>Part Number</th>
+                    <th>PO</th>
+                    <th>Sch Line</th>
+                    <th>Qty</th>
+                    <th>Customer</th>
+                    <th>ASN</th>
+                    <th>Ship Date</th>
+                    <th>Commit Date</th>
+                    <th>OTD Date</th>
+                    <th>Dwg Rev</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="10" class="text-center">No data available</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+  
+

@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="mt-2">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ActiveTab == "Progress" ? "active" : "")" href="@Url.Action("IndexInProgress", "Completion")">In-Progress List</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ActiveTab == "ASN" ? "active" : "")" href="@Url.Action("IndexASN", "Completion")">ASN Update </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ActiveTab == "Packing" ? "active" : "")" href="@Url.Action("IndexPacking", "Completion")">Packing List Update</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ActiveTab == "AWB" ? "active" : "")" href="@Url.Action("IndexAWB", "Completion")">AWB & POD Update</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ActiveTab == "Jabil" ? "active" : "")" href="@Url.Action("IndexJabil", "Completion")">Jabil/Pudak</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ActiveTab == "Edit Data" ? "active" : "")" href="@Url.Action("EditData", "Completion")">Edit Data</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link @(ViewBag.ActiveTab == "Cancelation" ? "active" : "")" href="@Url.Action("IndexCancelation", "Completion")">Cancelation</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ActiveTab == "Invoice" ? "active" : "")" href="@Url.Action("IndexInvoice", "Completion")">Invoice & PEB Update</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ActiveTab == "Create Ship" ? "active" : "")" href="@Url.Action("CreateShip", "Completion") ">Create Ship Docs Folder</a>
+        </li>
+    </ul>
+</div>

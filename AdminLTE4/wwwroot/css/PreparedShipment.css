@@ -1,0 +1,13 @@
+﻿body {
+}
+
+.container{
+    width: 100%;
+}
+th, td {
+    width:2%;
+}
+.card{
+    border:none!important;
+    border-radius: 4px!important;
+}

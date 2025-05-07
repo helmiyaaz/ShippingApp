@@ -1,0 +1,157 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@await Html.PartialAsync("_ShipmentCompletionTabs")
+<link rel="stylesheet" href="~/css/Shipment.css">
+<div class="container-fluid">
+    <div class="mt-2">
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Completion/IndexASN">
+                    Regular Customer
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Completion/CTG">
+                    CTG Only
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="card p-3">
+    <div class="row mt-3">
+        <!-- Bagian Kiri -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body p-2">
+                    <div class="col-md-6">
+                        <label for="deliveryPoint" class="form-label">Delivery Point:</label>
+                        <select class="form-select" id="deliveryPoint">
+                            <option selected>Pilih...</option>
+                            <option value="1">Point 1</option>
+                            <option value="2">Point 2</option>
+                        </select>
+                    </div>
+                    <div class="table-responsive mt-2">
+                        <table class="table table-bordered table-sm">
+                            <thead>
+                                <tr class="table-dark">
+                                    <th>SO</th>
+                                    <th>Line</th>
+                                    <th>Part Number</th>
+                                    <th>DN</th>
+                                    <th>Lot_Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6" class="text-center">No data available</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian Kanan -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body p-2">
+                    <h5>Summary</h5>
+                    <div class="row p-2">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="form-label">SO#:</label>
+                                            <div class="d-flex">
+                                                <input type="text" class="form-control me-2">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">PO#:</label>
+                                            <div class="d-flex">
+                                                <input type="text" class="form-control me-2">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Part#:</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">DN#:</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label">Description:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="form-label">Qty:</label>
+                                        <input type="text" class="form-control" style="width: 100px;">
+                                    </div>
+                                    <div class="row mb-2 align-items-end">
+                                        <div class="col-md-6">
+                                            <label class="form-label">ASN:</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="submit" class="btn btn-secondary">Update</button>
+                                            <button type="reset" class="btn btn-danger">Cancel</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                   <label class="form-label">PO Revision:</label>
+                                    <div class="po-revision">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <h6>Open Order List:</h6>
+                    <table class="table table-bordered table-sm">
+                        <thead>
+                            <tr class="table-dark">
+                                <th> </th>
+                                <th>Batch#</th>
+                                <th>Qty</th>
+                                <th>ID</th>
+                                <th>Part Number</th>
+                                <th>Description</th>
+                                <th>Delivery Point</th>
+                                <th>DN</th>
+                                <th>Drawing_Rev</th>
+                                <th>PO_Rev</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="10" class="text-center">No data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

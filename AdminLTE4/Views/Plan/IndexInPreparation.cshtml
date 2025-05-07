@@ -1,0 +1,150 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" href="~/css/Shipment.css">
+
+    @await Html.PartialAsync("_ShipmentPlanTabs")  
+    <div class="card">
+        <div class="card-body">
+        <h5>Table</h5>
+        <div class="row mb-2">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <label for="inputPassword6" class="col-form-label">Delivery Point</label>
+                </div>
+                <div class="col-md-2">
+                    <select id="customerFilter" class="form-select">
+                        <option value="">All Data</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <button class="btn btn-secondary btn-sm">
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+                </div>
+                <div class="col-auto">
+                    <label  class="col-form-label">Weight</label>
+                </div>
+                <div class="col-md-2">
+                    <input id="weightInput" class="form-control" />
+                </div>
+                <div class="col-auto">
+                    <label class="col-form-label">Ttl Weight</label>
+                </div>
+                <div class="col-md-2">
+                    <input id="ttlWeightInput" class="form-control" />
+                </div>
+            </div>
+            <div class="table-responsive mt-2">
+                <table class="table table-bordered table-hover" id="shipmentLogTable">
+                    <thead>
+                        <tr class="table-dark">
+                            <th>#</th>
+                            <th>SO</th>
+                            <th>SO Line</th>
+                            <th>PO</th>
+                            <th>PO Line</th>
+                            <th>Part #</th>
+                            <th>Description</th>
+                            <th>Qty</th>
+                            <th>Batch #</th>
+                            <th>Customer</th>
+                            <th>Dlv Point</th>
+                            <th>Status</th>
+                            <th>COS</th>
+                            <th>Ttl_COS</th>
+                            <th>Weight</th>
+                            <th>Ttl_Weight</th>
+                            <th>Ctn #</th>
+                            <th>Mode</th>
+                            <th>DN</th>
+                            <th>ASN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "/ShipmentLog/GetCustomers",
+                type: "GET",
+                success: function (data) {
+                    $.each(data, function (i, customer) {
+                        $('#customerFilter').append(`<option value="${customer}">${customer}</option>`);
+                    });
+                }
+            });
+
+            var table = $("#shipmentLogTable").DataTable({
+                scrollY: "400px",
+                scrollX: true,
+                scrollCollapse: true,
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "/ShipmentLog/ReadData",
+                    type: "GET",
+                    data: function (d) {
+                        var customer = $('#customerFilter').val();
+                        d.customer = customer === "All Data" ? null : customer; 
+                    },
+                    dataSrc: function (json) {
+                        return json.data || [];
+                    }
+                },
+                columns: [
+                    { data: "doc_Number" },
+                    { data: "so" },
+                    { data: "sO_Line" },
+                    { data: "po" },
+                    { data: "pO_Line" },
+                    { data: "part_Number" },
+                    { data: "description" },
+                    { data: "qty" },
+                    { data: "batch_Number" },
+                    { data: "customer" },
+                    { data: "delivery_Point" },
+                    { data: "status" },
+                    { data: "cos" },
+                    { data: "ttl_COS" },
+                    { data: "weight" },
+                    { data: "ttl_Weight" },
+                    { data: "ctn_Number" },
+                    { data: "mode" },
+                    { data: "dn" },
+                    { data: "asn" },
+                ]
+            });
+
+            $('#customerFilter').on('change', function () {
+                table.ajax.reload();
+                updateWeightSums();
+            });
+
+            function updateWeightSums() {
+                const selectedCustomer = $('#customerFilter').val();
+
+                $.ajax({
+                    url: '/ShipmentLog/SumWeights',
+                    type: 'GET',
+                    data: { customer: selectedCustomer },
+                    success: function (res) {
+                            $('#weightInput').val(res.weight);
+                            $('#ttlWeightInput').val(res.ttlWeight);
+                    }
+                });
+            }
+            updateWeightSums();
+
+        });
+    </script>
+}

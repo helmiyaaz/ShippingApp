@@ -1,0 +1,117 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@await Html.PartialAsync("_ShipmentCompletionTabs")
+<link rel="stylesheet" href="~/css/Shipment.css">
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="col-md-8 d-flex flex-wrap gap-3 mb-3">
+            <div class="col-md-2">
+                <label class="form-label">Doc#:</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-4  d-flex align-items-end">
+                <button class="btn btn-secondary me-2">Update</button>
+                <button class="btn btn-danger me-2">Delete</button>
+                <button class="btn btn-danger">Clear Data</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <h4 class="mb-2">Details</h4>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-8 d-flex align-items-center mb-3">
+                        <label class="form-label me-3">SO:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center mb-3">
+                        <label class="form-label me-3">Line:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center mb-3">
+                        <label class="form-label me-3">PO:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center mb-3">
+                        <label class="form-label me-3">Line:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center mb-3">
+                        <label class="form-label me-3">Part #:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center mb-3">
+                        <label class="form-label me-3">Description:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center mb-3">
+                        <label class="form-label me-3">Qty:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center mb-3">
+                        <label class="form-label me-3">Batch#:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center mb-3">
+                        <label class="form-label me-3">PO Rev:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-8 d-flex align-items-center mb-3">
+                    <label class="form-label me-3">Customer:</label>
+                    <select id="customer" class="form-select">
+                        <option selected>Choose...</option>
+                    </select>
+                </div>
+                <div class="col-md-8 d-flex align-items-center mb-3">
+                    <label class="form-label me-3">Delivery Point:</label>
+                    <select id="customer" class="form-select">
+                        <option selected>Choose...</option>
+                    </select>
+                </div>
+                <div class="col-md-8 d-flex align-items-center mb-3">
+                    <label class="form-label me-3">Status:</label>
+                    <select id="customer" class="form-select">
+                        <option selected>Choose...</option>
+                    </select>
+                </div>
+                <div class="col-md-8 d-flex align-items-center mb-3">
+                    <label class="form-label me-3">Carton#:</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-8 d-flex align-items-center mb-3">
+                    <label class="form-label me-3">DN#:</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-8 d-flex align-items-center mb-3">
+                    <label class="form-label me-3">ASN#:</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-8 d-flex align-items-center mb-3">
+                    <label class="form-label me-3">Shipment#:</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-8 d-flex align-items-center mb-3">
+                    <label class="form-label me-3">Batch Mtl:</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-8 d-flex align-items-center mb-3">
+                    <label class="form-label me-3">Serial#:</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-8 d-flex align-items-center mb-3">
+                    <label class="form-label me-3">Remarks:</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

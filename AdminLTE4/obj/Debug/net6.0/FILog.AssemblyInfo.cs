@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FILog")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2990cabf1abf718e4601c979a1344d01b3ec5726")]
 [assembly: System.Reflection.AssemblyProductAttribute("FILog")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FILog")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

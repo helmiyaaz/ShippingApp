@@ -1,0 +1,131 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" href="~/css/Shipment.css">
+
+    <style>
+        .custom-container {
+            align-items: center;
+            background-color: #eaeaea;
+            border-radius: 5px;
+            padding: 8px;
+        }
+        .status-box {
+            border-radius: 5px;
+            font-weight: bold;
+            padding: 8px;
+        }
+        .picked { background-color: yellow; }
+        .coc-requested { background-color: #d4f1f9; }
+        .coc-created { background-color: #90ee90; }
+    </style>
+
+
+@await Html.PartialAsync("_ShipmentCompletionTabs")
+
+<div class="card">
+    <div class="card-body">
+        <div class="row d-flex justify-content-between align-items-end">
+            <!-- Bagian Kiri -->
+            <div class="col-md-8 d-flex flex-wrap gap-3">
+                <div class="col-md-2">
+                    <label class="form-label">Part Number:</label>
+                    <select class="form-select">
+                        <option selected>Pilih...</option>
+                        <option value="1">Customer 1</option>
+                        <option value="2">Customer 2</option>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <label class="form-label">PO#:</label>
+                    <select class="form-select">
+                        <option selected>Pilih...</option>
+                        <option value="1">Customer 1</option>
+                        <option value="2">Customer 2</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Customer:</label>
+                    <select class="form-select">
+                        <option selected>Pilih...</option>
+                        <option value="1">Customer 1</option>
+                        <option value="2">Customer 2</option>
+                    </select>
+                </div>
+                <div class="col-md-4  d-flex align-items-end">
+                    <button class="btn btn-primary me-2">Search</button>
+                    <button class="btn btn-secondary">Print Checklist</button>
+                </div>
+            </div>
+
+            <!-- Bagian Kanan -->
+            <div class="col-md-4 d-flex justify-content-end gap-3">
+                <div class="col">
+                    <label class="form-label">Total Lines:</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">Total Boxes:</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">Total CoS:</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <table class="table table-responsive table-sm">
+        <thead>
+            <tr class="table-dark">
+                <th>Doc#</th>
+                <th>CTN#</th>
+                <th>Status</th>
+                <th>SO</th>
+                <th>Line</th>
+                <th>Part#</th>
+                <th>Description</th>
+                <th>Batch#</th>
+                <th>Qty</th>
+                <th>PO</th>
+                <th>Price</th>
+                <th>LSD</th>
+                <th>DN</th>
+                <th>Rev</th>
+                <th>ASN</th>
+                <th>Shipment#</th>
+                <th>Remarks</th>
+                <th>Lot#</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="10" class="text-center">No data available</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+   
+   <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="custom-container">
+                    <span>Click on the Part Number to know the total quantity</span>
+                 </div>
+            </div>
+            <div class="col-md-2">
+                <span class="status-box picked">Picked (0)</span>
+            </div>
+            <div class="col-md-2">
+                <span class="status-box coc-requested">CoC Requested (0)</span>
+            </div>
+            <div class="col-md-2">
+                <span class="status-box coc-created">CoC Created (0)</span>
+            </div>
+    </div>
+

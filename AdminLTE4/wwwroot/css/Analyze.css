@@ -1,0 +1,11 @@
+﻿body {
+}
+
+.row{
+    justify-content:space-between;
+}
+
+.card {
+    border: none !important;
+    border-radius: 4px !important;
+}

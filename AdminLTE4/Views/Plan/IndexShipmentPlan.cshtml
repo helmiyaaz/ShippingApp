@@ -1,0 +1,592 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    
+}
+<link rel="stylesheet" href="~/css/ShipmentPlan.css">
+
+@await Html.PartialAsync("_ShipmentPlanTabs")
+@await Html.PartialAsync("_ShipmentPlanModal")
+@await Html.PartialAsync("_createModal")
+
+<div class="card">
+    <div class="card-body ">
+        <h5 class="mb-2">Shipment</h5>
+        <button class="btn btn-secondary btn-sm " id="btnPreview">Mass Upload</button>
+            <input type="file" id="excelFile" class="form-control d-none" />
+        <button class="btn btn-secondary btn-sm" id="btnPreviewMonthly">Monthly Plan</button>
+        <input type="file" id="excelFileMonthly" class="form-control d-none" />
+          <button class="btn btn-secondary btn-sm" id="btnNewAdd" >New Add</button>
+            <button class="btn btn btn-danger btn-sm">Reset</button>
+        <button class="btn btn-secondary btn-sm" id="btnExport">Excel</button>
+      <div class=" mt-2">
+        <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioALL" value="ALL">
+                <label class="form-check-label" for="radioALL">All</label>
+        </div>
+        <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioSOA" value="SOA">
+                <label class="form-check-label" for="radioSOA">SOA</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioVernon" value="Vernon">
+                <label class="form-check-label" for="radioVernon">Vernon</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radio3PL" value="3PL">
+                <label class="form-check-label" for="radio3PL">3PL</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioNavs" value="Navs">
+            <label class="form-check-label" for="radioNavs">Navs</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioBedok" value="Bedok">
+            <label class="form-check-label" for="radioBedok">Bedok</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioCETG" value="CETG">
+                <label class="form-check-label" for="radioCETG">CETG O</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioBangalore" value="Bangalore">
+                <label class="form-check-label" for="radioBangalore">Bangalore</label>
+        </div>
+        <div class="form-check form-check-inline" >
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioRLC" value="RLC">
+                <label class="form-check-label" for="radioRLC">RLC</label>
+        </div>
+        <div class="mt-2">
+                <table class="table table-bordered table-hover"  id="shipmentTable" style="width:100%">
+                    <thead>
+                        <tr class="table-dark">
+                            <th>SO</th>
+                            <th>line</th>
+                            <th>PO</th>
+                            <th>Line</th>
+                            <th>Part Number</th>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Customer</th>
+                            <th>Delivery Point</th>
+                            <th>SSD</th>
+                            <th>LSD</th>
+                            <th>CRD</th>
+                            <th>PSD</th>
+                            <th>Week</th>
+                            <th>COS</th>
+                            <th>Ttl COS</th>
+                            <th>Mode</th>
+                            <th>Drawing Rev</th>
+                            <th>Remarks</th>
+                            <th>PO Type</th>
+                            <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+     </div>
+      <div>
+            <div class="summary-container">
+                <div class="left-section">
+                    <span><strong>SSD:</strong> Start Ship Date</span>
+                    <span><strong>LSD:</strong> Last Ship Date</span>
+                    <span><strong>CRD:</strong> Customer Request Date</span>
+                    <span><strong>PSD:</strong> Plan Ship Date</span>
+                </div>
+
+                <div class="right-section">
+                    <span><strong>Total Line:</strong> 148</span>
+                    <span class="total-cost"><strong>Total COS:</strong> $1,454,188</span>
+                </div>
+            </div>
+      </div>
+    </div>   
+</div>
+
+<!-- Modal Preview -->
+<div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="previewModalLabel">Preview Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="previewContainer" style="max-height: 60vh; overflow-y: auto;"></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="btnSave" style="display:none;">Upload</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="previewModalMonthly" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="previewModalLabel">Preview Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="previewContainerMonthly" style="max-height: 60vh; overflow-y: auto;"></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="btnSaveMonthly" style="display:none;">Upload</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var table = $("#shipmentTable").DataTable({
+                "scrollY": "400px",
+                "scrollX": true,
+                "scrollCollapse": true,
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "/ShipmentPlan/ReadData",
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json",
+                    dataSrc: function (json) {
+                        return json.data || [];
+                    }
+                },
+                columns: [
+                    { data: "so" },
+                    { data: "sO_Line" },
+                    { data: "po" },
+                    { data: "pO_Line" },
+                    { data: "part_Number" },
+                    { data: "description" },
+                    { data: "qty" },
+                    { data: "customer" },
+                    { data: "delivery_Point" },
+                    { data: "ssd", render: formatDate },
+                    { data: "lsd", render: formatDate },
+                    { data: "crd", render: formatDate },
+                    { data: "psd", render: formatDate },
+                    { data: "week" },
+                    { data: "cos" },
+                    { data: "ttl_COS" },
+                    { data: "mode" },
+                    { data: "drawing_Rev" },
+                    { data: "remarks" },
+                    { data: "pO_Type" },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return `
+                                <div class="d-flex gap-1 align-item-center justify-content-center">
+                                <button class="btn btn-secondary btn-sm btn-edit" data-id="${row.id}"><i class="bi bi-pencil-fill"></i></button>
+                                <button class="btn btn-danger btn-sm btn-delete" data-id="${row.id}"><i class="bi bi-trash3-fill"></i></button>
+                                </<div>
+                            `;
+                        },
+                    }
+                ]
+            });
+
+            $("#btnNewAdd").on("click", function () {
+                $('#createForm')[0].reset();
+                $('#createModal').modal('show');
+            });
+
+            $('#createForm').submit(function (e) {
+            e.preventDefault();
+            
+            const soValue = $('#createForm #so').val().trim();
+            if (!soValue) {
+                Swal.fire('Validasi Gagal', 'Field SO wajib diisi.', 'warning');
+                return;
+            }
+
+            const data = {
+                SO: soValue,
+                SO_Line: $('#createForm #so_line').val().trim() || null,
+                PO: $('#createForm #po').val().trim() || null,
+                PO_Line: $('#createForm #po_line').val().trim() || null,
+                Part_Number: $('#createForm #part_num').val().trim() || null,
+                Description: $('#createForm #desc').val().trim() || null,
+                Qty: parseFloat($('#createForm #qty').val()) || 0.0,
+                Customer: $('#createForm #customer').val().trim() || null,
+                Delivery_Point: $('#createForm #del_point').val().trim() || null,
+                SSD: $('#createForm #ssd').val() || null,
+                LSD: $('#createForm #lsd').val() || null,
+                CRD: $('#createForm #crd').val() || null,
+                PSD: $('#createForm #psd').val() || null,
+                Week: $('#createForm #week').val().trim() || null,
+                COS: parseFloat($('#createForm #cost_pe').val()) || 0.0,
+                Ttl_COS: parseFloat($('#createForm #total_cost').val()) || 0.0,
+                Mode: $('#createForm #ship_mode').val().trim() || null,
+                Drawing_Rev: $('#createForm #dwg_rev').val() || null,
+                PO_Type : $('#createForm #order_type').val() || null,
+                Remarks: $('#createForm #remarks').val().trim() || null
+            };
+
+            console.log("Data yang dikirim untuk Create:", data);
+
+            $.ajax({
+                url: "/ShipmentPlan/CreateData",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (res) {
+                    console.log("Data berhasil dibuat:", res);
+                    $('#createModal').modal('hide');
+                    $('#createForm')[0].reset();
+                    $('#shipmentTable').DataTable().ajax.reload(null, false);
+                    Swal.fire('Sukses', 'Data berhasil ditambahkan!', 'success');
+                },
+                error: function (xhr) {
+                    console.error("Error saat Create:", xhr.responseText);
+                    Swal.fire('Error', `Gagal menambahkan data. Server response: ${xhr.responseText}`, 'error');
+                }
+            });
+        });
+
+            $('#updateForm').submit(function (e) {
+            e.preventDefault();
+
+            const data = {
+                id: $('#updateForm #shipmentId').val(),
+                SO: $('#updateForm #so').val() || null,
+                SO_Line: $('#updateForm #so_line').val() || null,
+                PO: $('#updateForm #po').val().trim() || null,
+                PO_Line: $('#updateForm #po_line').val() || null,
+                Part_Number: $('#updateForm #part_num').val() || null,
+                Description: $('#updateForm #desc').val() || null,
+                Qty: parseFloat($('#updateForm #qty').val()) || 0.0,
+                Customer: $('#updateForm #customer').val() || null,
+                Delivery_Point: $('#updateForm #del_point').val() || null,
+                SSD: $('#updateForm #ssd').val() || null,
+                LSD: $('#updateForm #lsd').val() || null,
+                CRD: $('#updateForm #crd').val() || null,
+                PSD: $('#updateForm #psd').val() || null,
+                Week: $('#updateForm #week').val() || null,
+                COS: parseFloat($('#updateForm #cost_pe').val()) || 0.0,
+                Ttl_COS: parseFloat($('#updateForm #total_cost').val()) || 0.0,
+                Mode: $('#updateForm #ship_mode').val() || null,
+                Drawing_Rev: $('#updateForm #dwg_rev').val() || null,
+                PO_Type : $('#createForm #order_type').val() || null,
+                Remarks: $('#updateForm #remarks').val() || null
+            };
+
+            if (!data.id || isNaN(data.id) || data.id <= 0) {
+                Swal.fire('Error', 'ID tidak valid atau tidak ditemukan.', 'error');
+                return;
+            }
+
+            console.log("Data yang dikirim untuk Update:", data);
+
+            $.ajax({
+                url: `/ShipmentPlan/Update/${data.id}`,
+                type: "PUT",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (res) {
+                    console.log("Data berhasil diperbarui:", res);
+                    $('#updateModal').modal('hide');
+                    $('#shipmentTable').DataTable().ajax.reload();
+                    Swal.fire('Sukses', 'Data berhasil diperbarui!', 'success');
+                },
+                error: function (xhr) {
+                    console.error("Error saat Update:", xhr.responseText);
+                    Swal.fire('Error', `Gagal memperbarui data. Server response: ${xhr.responseText}`, 'error');
+                }
+            });
+        });
+
+
+            $('#shipmentTable tbody').on('click', '.btn-edit', function () {
+            let id = $(this).data("id");
+
+            $.ajax({
+                url: `/ShipmentPlan/GetById/${id}`,
+                type: "GET",
+                success: function (data) {
+                    console.log("Data dari server:", data);
+                     
+                    $('#shipmentId').val(data.id);
+                    $('#so').val(data.so);
+                    $('#so_line').val(data.sO_Line);
+                    $('#po').val(data.po);
+                    $('#po_line').val(data.pO_Line);
+                    $('#part_num').val(data.part_Number);
+                    $('#desc').val(data.description);
+                    $('#qty').val(data.qty);
+                    $('#customer').val(data.customer);
+                    $('#del_point').val(data.delivery_Point);
+                    $('#ssd').val(data.ssd ? data.ssd.split('T')[0] : '');
+                    $('#lsd').val(data.lsd ? data.lsd.split('T')[0] : '');
+                    $('#crd').val(data.crd ? data.crd.split('T')[0] : '');
+                    $('#psd').val(data.psd ? data.psd.split('T')[0] : '');
+                    $('#week').val(data.week);
+                    $('#cost_pe').val(data.cos);
+                    $('#total_cost').val(data.ttl_COS);
+                    $('#ship_mode').val(data.mode);
+                    $('#dwg_rev').val(data.drawing_Rev);
+                    $('#remarks').val(data.remarks);
+
+                    $('#updateModal').modal('show');
+                },
+                error: function (xhr) {
+                    console.error("Error mengambil data:", xhr.responseText);
+                }
+            });
+        });
+
+            $('#shipmentTable tbody').on('click', '.btn-delete', function () {
+                let id = $(this).data("id");
+
+                Swal.fire({
+                    title: "Konfirmasi Hapus",
+                    text: "Apakah Anda yakin ingin menghapus data ini?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    confirmButtonText: "Ya, Hapus!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: `/ShipmentPlan/Delete/${id}`,
+                            type: "DELETE",
+                            success: function () {
+                                $('#shipmentTable').DataTable().ajax.reload();
+                                Swal.fire('Deleted!', 'Data berhasil dihapus.', 'success');
+                            },
+                            error: function () {
+                                Swal.fire('Error', 'Gagal menghapus data.', 'error');
+                            }
+                        });
+                    }
+                }); 
+            });
+
+            function formatDate(data) {
+                if (!data) return "";
+                let date = new Date(data);
+                return date.toLocaleDateString("en-US");
+            }
+
+            let previewData = []
+
+            $('#btnPreview').click(function () {
+                 $('#excelFile').click(); 
+             });
+
+            $('#excelFile').change(function () {
+                 const file = this.files[0];
+                 if (!file) {
+                     Swal.fire("Oops", "Pilih file terlebih dahulu!", "warning");
+                     return;
+                 }
+
+                 let formData = new FormData();
+                 formData.append('file', file);
+                  $.ajax({
+                     url: '/ShipmentPlan/PreviewExcel',
+                     type: 'POST',
+                     data: formData,
+                     contentType: false,
+                     processData: false,
+                     beforeSend: function () {
+                         $('#btnPreview').prop('disabled', true).text('Loading...');
+                     },
+                     success: function (res) {
+                         previewData = res;
+                         $('#btnPreview').prop('disabled', false).text('Upload');
+
+                         if (res.length === 0) {
+                             Swal.fire("Info", "File tidak memiliki data.", "info");
+                             return;
+                         }
+
+                         let html = '<table class="table table-bordered"><thead><tr>';
+                         for (let key in res[0]) {
+                             html += `<th>${key}</th>`;
+                         }
+                         html += '</tr></thead><tbody>';
+                         res.forEach(row => {
+                             html += '<tr>';
+                             for (let key in row) {
+                                 html += `<td>${row[key]}</td>`;
+                             }
+                             html += '</tr>';
+                         });
+                         html += '</tbody></table>';
+                         $('#previewContainer').html(html);
+                         $('#btnSave').show();
+
+                        const modal = new bootstrap.Modal(document.getElementById('previewModal'));
+                        modal.show();
+                     },
+                     error: function () {
+                         $('#btnPreview').prop('disabled', false).text('Upload');
+                         Swal.fire("Error", "Gagal membaca file!", "error");
+                     }
+                 });
+             });
+
+            $('#btnSave').click(function () {
+            Swal.fire({
+                title: 'Overwrite Data?',
+                text: 'Apakah kamu ingin overwrite data lama?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Iya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                let overwrite = result.isConfirmed;
+
+                $.ajax({
+                    url: '/ShipmentPlan/ImportExcel',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        data: previewData,
+                        overwrite: overwrite
+                    }),
+                    success: function () {
+                        Swal.fire("Berhasil", "Data berhasil disimpan!", "success");
+                        $('#btnSave').hide();
+                        $('#previewContainer').html('');
+                        $('#previewModal').modal('hide');
+                        $('#excelFile').val('');
+                        table.ajax.reload();
+                    },
+                    error: function () {
+                        Swal.fire("Gagal", "Terjadi kesalahan saat menyimpan data.", "error");
+                    }
+                });
+            });
+        });
+
+            $('#btnExport').click(function () {
+                $.ajax({
+                url: '/ShipmentPlan/ExportExcel',
+                method: 'GET',
+                xhrFields: {
+                    responseType: 'blob' // penting!
+                },
+                success: function (data) {
+                    const blob = new Blob([data], {
+                        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                    });
+                    const url = window.URL.createObjectURL(blob);
+
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'DMS_WeeklyShipmentPlan.xlsx';
+                    document.body.appendChild(a);
+                    a.click();
+
+                    window.URL.revokeObjectURL(url); // Bersihkan URL blob
+                },
+                error: function () {
+                    Swal.fire("Error", "Gagal mendownload file.", "error");
+                }
+            });
+          });
+
+            $('#btnPreviewMonthly').click(function(){
+                $('#excelFileMonthly').click();
+            });
+
+            $('#excelFileMonthly').change(function () {
+                 const file = this.files[0];
+                 if (!file) {
+                     Swal.fire("Oops", "Pilih file terlebih dahulu!", "warning");
+                     return;
+                 }
+
+                 let formData = new FormData();
+                 formData.append('file', file);
+                  $.ajax({
+                     url: '/ShipmentPlan/PreviewExcel',
+                     type: 'POST',
+                     data: formData,
+                     contentType: false,
+                     processData: false,
+                     beforeSend: function () {
+                         $('#btnPreviewMonthly').prop('disabled', true).text('Loading...');
+                     },
+                     success: function (res) {
+                         previewData = res;
+                         $('#btnPreviewMonthly').prop('disabled', false).text('Upload');
+
+                         if (res.length === 0) {
+                             Swal.fire("Info", "File tidak memiliki data.", "info");
+                             return;
+                         }
+
+                         let html = '<table class="table table-bordered"><thead><tr>';
+                         for (let key in res[0]) {
+                             html += `<th>${key}</th>`;
+                         }
+                         html += '</tr></thead><tbody>';
+                         res.forEach(row => {
+                             html += '<tr>';
+                             for (let key in row) {
+                                 html += `<td>${row[key]}</td>`;
+                             }
+                             html += '</tr>';
+                         });
+                         html += '</tbody></table>';
+                         $('#previewContainerMonthly').html(html);
+                         $('#btnSaveMonthly').show();
+
+                        const modal = new bootstrap.Modal(document.getElementById('previewModalMonthly'));
+                        modal.show();
+                     },
+                     error: function () {
+                         $('#btnPreviewMonthly').prop('disabled', false).text('Upload');
+                         Swal.fire("Error", "Gagal membaca file!", "error");
+                     }
+                 });
+             });
+
+            $('#btnSaveMonthly').click(function () {
+            Swal.fire({
+                title: 'Overwrite Data?',
+                text: 'Apakah kamu ingin overwrite data lama?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Iya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                let overwrite = result.isConfirmed;
+
+                $.ajax({
+                    url: '/ShipmentPlan/ImportExcelMonthly',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        data: previewData,
+                        overwrite: overwrite
+                    }),
+                    success: function () {
+                        Swal.fire("Berhasil", "Data berhasil disimpan!", "success");
+                        $('#btnSaveMonthly').hide();
+                        $('#previewContainerMonthly').html('');
+                        $('#previewModalMonthly').modal('hide');
+                        $('#excelFileMonthly').val('');
+                    },
+                    error: function () {
+                        Swal.fire("Gagal", "Terjadi kesalahan saat menyimpan data.", "error");
+                    }
+                });
+            });
+        });
+
+            
+        });
+    </script>
+}

@@ -1,0 +1,179 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" href="~/css/ShipmentPlan.css">
+
+<div class="modal fade" id="updateModal" tabindex="-2" aria-labelledby="shipmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <h5 class="mb-2 mt-3">Shipment Details</h5>
+        <form class="modal-content" id="updateForm">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Shipment </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <!-- Kolom 1 -->
+                    <div class="col-md-4">
+                        <div class="row mb-2 align-items-center">
+                            <input type="hidden" id="shipmentId" name="shipmentId">
+                            <label class="col-md-4 col-form-label">*Sales Order:</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="so" id="so">
+                            </div>
+                            <label class="col-md-2 col-form-label">*Line:</label>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" id="so_line">
+                            </div>
+                        </div>
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*PO#:</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="po">
+                            </div>
+                            <label class="col-md-2 col-form-label">*Line:</label>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" id="po_line">
+                            </div>
+                        </div>
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Customer:</label>
+                            <div class="col-md-8">
+                                <select class="form-select" id="customer">
+                                    <option>Select...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Delivery Point:</label>
+                            <div class="col-md-8">
+                                <select class="form-select" id="del_point">
+                                    <option>Select...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Part Number:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="part_num">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Description:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="desc">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kolom 2 -->
+                    <div class="col-md-4">
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Quantity:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="qty">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Start Ship Date:</label>
+                            <div class="col-md-8">
+                                <input type="date" class="form-control" id="ssd">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Last Ship Date:</label>
+                            <div class="col-md-8">
+                                <input type="date" class="form-control" id="lsd">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Cust Req Date:</label>
+                            <div class="col-md-8">
+                                <input type="date" class="form-control" id="crd">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Plan Ship Date:</label>
+                            <div class="col-md-8">
+                                <input type="date" class="form-control" id="psd">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Week:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="week">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kolom 3 -->
+                    <div class="col-md-4">
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Cost per each:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="cost_pe">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Total Cost:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="total_cost">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Ship Mode:</label>
+                            <div class="col-md-8">
+                                <select class="form-select" id="ship_mode">
+                                    <option>Select...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Dwg Rev:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="dwg_rev">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">*Order Type:</label>
+                            <div class="col-md-8">
+                                <select class="form-select" id="order_type">
+                                    <option>Select...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <label class="col-md-4 col-form-label">Remarks:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="remarks">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer d-flex align-item-center">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-secondary">Save</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+

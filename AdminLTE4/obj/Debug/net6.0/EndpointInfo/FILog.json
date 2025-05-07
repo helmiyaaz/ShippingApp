@@ -11,10 +11,10 @@
     "version": "v1"
   },
   "paths": {
-    "/QualityInspection/ReadData": {
+    "/ShipmentPlan/ReadData": {
       "get": {
         "tags": [
-          "QualityInspectionApi"
+          "Plan"
         ],
         "responses": {
           "200": {
@@ -23,16 +23,264 @@
         }
       }
     },
-    "/QualityInspectionApi/GetByOrder/{orderNumber}": {
-      "get": {
+    "/ShipmentPlan/CreateData": {
+      "post": {
         "tags": [
-          "QualityInspectionApi"
+          "Plan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeeklyShipPlanModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeeklyShipPlanModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeeklyShipPlanModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentPlan/Update/{id}": {
+      "put": {
+        "tags": [
+          "Plan"
         ],
         "parameters": [
           {
-            "name": "orderNumber",
+            "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeeklyShipPlanModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeeklyShipPlanModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeeklyShipPlanModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentPlan/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Plan"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentPlan/GetById/{id}": {
+      "get": {
+        "tags": [
+          "Plan"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentPlan/PreviewExcel": {
+      "post": {
+        "tags": [
+          "Plan"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentPlan/ImportExcel": {
+      "post": {
+        "tags": [
+          "Plan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentPlan/ExportExcel": {
+      "get": {
+        "tags": [
+          "Plan"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentPlan/ImportExcelMonthly": {
+      "post": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentLog/ReadData": {
+      "get": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentLog/GetCustomers": {
+      "get": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentLog/SumWeights": {
+      "get": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "parameters": [
+          {
+            "name": "customer",
+            "in": "query",
             "schema": {
               "type": "string"
             }
@@ -46,5 +294,124 @@
       }
     }
   },
-  "components": { }
+  "components": {
+    "schemas": {
+      "ImportRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          },
+          "overwrite": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeeklyShipPlanModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "so": {
+            "type": "string",
+            "nullable": true
+          },
+          "sO_Line": {
+            "type": "string",
+            "nullable": true
+          },
+          "po": {
+            "type": "string",
+            "nullable": true
+          },
+          "pO_Line": {
+            "type": "string",
+            "nullable": true
+          },
+          "part_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "qty": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "customer": {
+            "type": "string",
+            "nullable": true
+          },
+          "delivery_Point": {
+            "type": "string",
+            "nullable": true
+          },
+          "ssd": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lsd": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "crd": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "psd": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "week": {
+            "type": "string",
+            "nullable": true
+          },
+          "cos": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "ttl_COS": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "mode": {
+            "type": "string",
+            "nullable": true
+          },
+          "drawing_Rev": {
+            "type": "string",
+            "nullable": true
+          },
+          "remarks": {
+            "type": "string",
+            "nullable": true
+          },
+          "pO_Type": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
 }
