@@ -174,8 +174,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>xce0f0hs70</Fingerprint>
-      <Integrity>Tzjpp72gaP/nFbYuqLUfr/sn878TNxYo16pE/hQZZvI=</Integrity>
+      <Fingerprint>9em4620bqz</Fingerprint>
+      <Integrity>YRh1UaAxEeItMyvFXM8BPC20o8vG8qdvroCTxEUtkaA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\PortalData.css'))</OriginalItemSpec>
@@ -210,8 +210,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>z7ziomsihq</Fingerprint>
-      <Integrity>z/LNMu863Jl3JpqB67jHZ9CCJtzO3AJTt/axR4roKCs=</Integrity>
+      <Fingerprint>98eh42w90t</Fingerprint>
+      <Integrity>SW5uqvKWklN95sy5WoqEKg1W/fNCYyYDqgpephLRfQU=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Shipment.css'))</OriginalItemSpec>

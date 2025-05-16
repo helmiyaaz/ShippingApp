@@ -1,8 +1,64 @@
 [
   {
     "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "GetSummaryByPart",
+    "RelativePath": "Analyze/GetSummaryByPart",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "partNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "ExportExcelPortal",
+    "RelativePath": "Portal/ExportExcel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "GetCustomerportal",
+    "RelativePath": "Portal/GetCustomer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "GetPortalData",
+    "RelativePath": "Portal/ReadAllData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FILog.Controllers.PlanAPIController",
     "Method": "GetCustomers",
     "RelativePath": "ShipmentLog/GetCustomers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "GetDeliveryPoint",
+    "RelativePath": "ShipmentLog/GetDelvpoint",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -139,6 +195,16 @@
         "IsRequired": false
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "GetDataAnalyze",
+    "RelativePath": "ShipmentPlan/ReadAnalyze",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

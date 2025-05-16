@@ -22,5 +22,8 @@ namespace FILog.Data
         public DbSet<WeeklyShipPlanModel> MaterialMaster { get; set; } = null!;
         public DbSet<MasterShipPlanModel> MasterShipPlanModels { get; set; } = null!;
         public DbSet<ShipmentLogModel> ShipmentLogModels { get; set; } = null !;
+        public DbSet<FGStockModel> FgStockModels { get; set;} = null!;
+        public DbSet<eLogMaterialModel> eLogMaterialModels { get; set;} = null!;
+        public DbSet<PortalModel> PortalModels { get; set; } = null!;
     }
 }

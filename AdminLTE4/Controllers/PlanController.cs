@@ -207,8 +207,7 @@ namespace AdminLTE4.Controllers
             using (var package = new ExcelPackage())
             {
                 var worksheet = package.Workbook.Worksheets.Add("DMS WeeklyShipment");
-
-                // buat headernya
+             
                 worksheet.Cells[1, 1].Value = "SO";
                 worksheet.Cells[1, 2].Value = "SO Line";
                 worksheet.Cells[1, 3].Value = "PO";
@@ -230,7 +229,6 @@ namespace AdminLTE4.Controllers
                 worksheet.Cells[1, 19].Value = "Remarks";
                 worksheet.Cells[1, 20].Value = "PO Type";
 
-                // Data
                 for (int i = 0; i < data.Count; i++)
                 {
                     var row = i + 2;

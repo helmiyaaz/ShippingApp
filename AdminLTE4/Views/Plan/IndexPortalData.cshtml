@@ -6,41 +6,29 @@
 <link rel="stylesheet" href="~/css/PortalData.css">
 
 
-    @await Html.PartialAsync("_ShipmentPlanTabs")
+   @await Html.PartialAsync("_ShipmentPlanTabs")
 
 
 <div class="container mt-3">
     <!-- Filter Section -->
     <div class="container-box">
-        <h6>Filter</h6>
-        <div class="row">
-            <div class="col-md-3">
-                <label class="form-label">Part Number:</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">PO#:</label>
-                <input type="text" class="form-control">
-            </div>
+        <div class="row">        
             <div class="col-md-3">
                 <label class="form-label">Customer:</label>
-                <select class="form-select">
+                <select class="form-select" id="CustomerFilter">
                     <option selected>Pilih...</option>
-                    <option value="1">Customer 1</option>
-                    <option value="2">Customer 2</option>
                 </select>
             </div>
             <div class="col-md-3 d-flex align-items-end">
-                <button class="btn btn-primary me-2">Search</button>
-                <button class="btn btn-secondary me-2">Clear Filter</button>
-                <button class="btn btn-success">Excel</button>
+                <button class="btn btn-secondary me-2" id="btnClearFilter">Clear Filter</button>
+                <button class="btn btn-success" id="btnExport">Excel</button>
             </div>
         </div>
     </div>
 
     <!-- Table Section -->
     <div class="grey-box">
-        <table class="table table-bordered table-sm">
+        <table class="table table-bordered table-sm mt-8" id="portalTable">
             <thead>
                 <tr class="table-dark">
                     <th>Part Number</th>
@@ -56,14 +44,107 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td colspan="10" class="text-center">No data available</td>
-                </tr>
             </tbody>
         </table>
 
     </div>
 </div>
 
+@section Scripts{
+    <script>
+        let table;
+        $(document).ready(function () {
+            $.ajax({
+                url: "/Portal/GetCustomer",
+                type: "GET",
+                success: function (data) {
+                    $.each(data, function (i, point) {
+                        $('#CustomerFilter').append(`<option value="${point}">${point}</option>`);
+                    });
+                }
+            });
+
+             table = $('#portalTable').DataTable({
+                processing: true,
+                serverSide: true,
+                searching: true,
+                paging: true,
+                ajax: {
+                    url: "/Portal/ReadAllData",
+                    type: "GET",
+                    data: function (d) {
+                        d.Customer = $('#CustomerFilter').val(); 
+                        d.PartNumber = $('#PNInput').val();     
+                        d.PO = $('#POInput').val();             
+                    },
+                    dataSrc: function(json){
+                        return json.data || [];
+                    },
+                },
+                columns: [
+                    { data: 'part_Number' },
+                    { data: 'po' },
+                    { data: 'sch_Line' },
+                    { data: 'qty' },
+                    { data: 'customer' },
+                    { data: 'asn' },
+                    { data: 'req_Date', render: formatDate },
+                    { data: 'commit_Date', render: formatDate },
+                    { data: 'otD_Date', render: formatDate },
+                    { data: 'remarks' },
+                ]
+            });
+
+            function formatDate(data) {
+                if (!data) return "";
+                let date = new Date(data);
+                return date.toLocaleDateString("en-US");
+            }
+
+            $('#CustomerFilter').on('change', function () {
+                if ($(this).val() === "") {
+                    table.clear().draw();
+                } else {
+                    table.ajax.reload();
+                }
+            });
+
+            $('#btnExport').click(function () {
+                $.ajax({
+                url: '/Portal/ExportExcel',
+                method: 'GET',
+                xhrFields: {
+                    responseType: 'blob' 
+                },
+                success: function (data) {
+                    const blob = new Blob([data], {
+                        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                    });
+                    const url = window.URL.createObjectURL(blob);
+
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'DMS_PortalData.xlsx';
+                    document.body.appendChild(a);
+                    a.click();
+
+                    window.URL.revokeObjectURL(url); 
+                },
+                error: function () {
+                    Swal.fire("Error", "Gagal mendownload file.", "error");
+                }
+                });
+            });
+
+            $('#btnClearFilter').on('click', function () {       
+                $('#CustomerFilter').val(''); 
+
+                $('#portalTable').DataTable().ajax.reload();
+            });
+
+        
+        });
+    </script>
+}
   
 

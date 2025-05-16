@@ -292,6 +292,87 @@
           }
         }
       }
+    },
+    "/ShipmentLog/GetDelvpoint": {
+      "get": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentPlan/ReadAnalyze": {
+      "get": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Analyze/GetSummaryByPart": {
+      "get": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "parameters": [
+          {
+            "name": "partNumber",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Portal/ReadAllData": {
+      "get": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Portal/GetCustomer": {
+      "get": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Portal/ExportExcel": {
+      "get": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {

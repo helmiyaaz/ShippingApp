@@ -10,3 +10,11 @@
     white-space: nowrap !important;
     text-align: center !important;
 }
+
+.dataTables_filter label input {
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
+    padding: 6px 10px !important;
+    width: 250px !important;
+    margin-bottom: 10px !important;
+}

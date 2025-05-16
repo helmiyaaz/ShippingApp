@@ -10,26 +10,22 @@
     <div class="row g-3">
         <div class="col-md-3">
             <label for="deliveryPoint" class="form-label">Delivery Point:</label>
-            <select class="form-select" id="deliveryPoint">
+            <select class="form-select" id="deliveryPointFilter">
                 <option selected>Pilih...</option>
-                <option value="1">Point 1</option>
-                <option value="2">Point 2</option>
             </select>
         </div>
         <div class="col-md-9 d-flex align-items-end">
-            <button class="btn btn-secondary btn-sm">Click to analyze</button>
+            <button class="btn btn-secondary btn-sm" id="analyzeBtn">Click to analyze</button>
         </div>
     </div>
 
     <div class="row mt-3">
-        <!-- Bagian Kiri -->
+        <!-- Bagian Kiri -->     
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body p-2">
-                    <h6>Table 1 (Left Side)</h6>
-                   <div class="table-responsive">
-
-                    <table class="table table-bordered table-sm">
+                   <div>
+                        <table class="table table-bordered table-sm table-hover" id="shipmentPlanTable">
                         <thead>
                             <tr class="table-dark">
                                 <th>Part #</th>
@@ -47,7 +43,6 @@
                         </tbody>
                     </table>
                    </div>
-
                 </div>
             </div>
         </div>
@@ -60,32 +55,32 @@
                     <div class="row p-2">
                         <div class="col-md-3">
                             <label class="form-label">Part Number:</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="partNumberInput">
                         </div>
                         <div class="col-md-3">
                             <label class="form-label">Plan Qty:</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="PlanQtyInput">
                         </div>
                         <div class="col-md-3">
                             <label class="form-label">Stock Qty:</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="StockInput">
                         </div>
                         <div class="col-md-3">
                             <label class="form-label">Open ASN:</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="OpenASNInput">
                         </div>
                         <div class="col-md-3 mt-2">
                             <label class="form-label">Prepared Qty:</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="PreparedInput">
                         </div>
                         <div class="col-md-3 mt-2">
                             <label class="form-label">WIP:</label>
-                            <input type="text" class="form-control highlight">
+                            <input type="text" class="form-control highlight" id="WIPInput">
                         </div>
                     </div>
 
                     <h6>Open Order List:</h6>
-                    <table class="table table-bordered table-sm">
+                    <table class="table table-bordered table-sm" id="summaryTable">
                         <thead>
                             <tr class="table-dark">
                                 <th>SO</th>
@@ -108,7 +103,7 @@
                     </table>
 
                     <h6>WIP Mapping (Based on SAP - ZPPWIP uploaded in the morning)</h6>
-                    <table class="table table-bordered table-sm">
+                    <table class="table table-bordered table-sm" id="wipTable">
                         <thead>
                             <tr class="table-dark">
                                 <th>Part #</th>
@@ -123,7 +118,7 @@
                                 <td colspan="5" class="text-center">No data available</td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table>'/'
 
                 </div>
             </div>
@@ -132,5 +127,128 @@
     </div>
 </div>
 
+@section Scripts {
+    <script>
+        let table;
 
+        $(document).ready(function () {
+            $.ajax({
+                url: "/ShipmentLog/GetDelvpoint",
+                type: "GET",
+                success: function (data) {
+                    $.each(data, function (i, point) {
+                        $('#deliveryPointFilter').append(`<option value="${point}">${point}</option>`);
+                    });
+                }
+            });
+
+            table = $('#shipmentPlanTable').DataTable({
+                "scrollY": "400px",
+                "scrollX": true,
+                "scrollCollapse": true,
+                processing: true,
+                serverSide: true,
+                searching: false,
+                paging: true,
+                ajax: {
+                    url: "/ShipmentPlan/ReadAnalyze",
+                    type: "GET",
+                    data: function (d) {
+                        d.Delivery_Point = $('#deliveryPointFilter').val();
+                    },
+                    dataSrc: function (json) {
+                        return json.data || [];
+                    }
+                },
+                columns: [
+                    { data: "part_Number" },
+                    { data: "description" },
+                    { data: "delivery_Point" },
+                    { data: "mode" },
+                    { data: "qty" },
+                    { data: "lsd", render: formatDate }
+                ]
+            }); 
+
+            $('#deliveryPointFilter').on('change', function () {
+                if ($(this).val() === "") {
+                    table.clear().draw(); 
+                } else {
+                    table.ajax.reload();
+                }
+            });
+
+           $('#shipmentPlanTable tbody').on('click', 'tr', function () {
+                const rowData = table.row(this).data();
+                const partNumber = rowData.part_Number;
+
+                $.ajax({
+                    url: '/Analyze/GetSummaryByPart',
+                    type: 'GET',
+                    data: { partNumber: partNumber },
+                    success: function (result) {
+                        $('#partNumberInput').val(result.partNumber);
+                        $('#PlanQtyInput').val(result.planQty);
+                        $('#StockInput').val(result.stockQty);
+                        $('#OpenASNInput').val(result.openASN);
+                        $('#PreparedInput').val(result.preparedQty);
+                        $('#WIPInput').val(result.wipQty);
+
+                        const planQty = result.planQty;
+                        const stockQty = result.stockQty;
+                        const preparedQty = result.preparedQty;
+                        const openASN = result.openASN;
+
+                            if (stockQty >= (planQty + preparedQty)) {
+                                $('#StockInput').css('background-color', '#d4edda'); 
+                            } else {
+                                $('#StockInput').css('background-color', '#f8d7da'); 
+                            }
+
+                            if (openASN >= preparedQty) {
+                                $('#OpenASNInput').css('background-color', '#d4edda'); 
+                            } else {
+                                $('#OpenASNInput').css('background-color', '#f8d7da'); 
+                            }
+
+                        const summaryRows = result.summaryList.map(item => `
+                            <tr>
+                                <td>${item.so}</td>
+                                <td>${item.sO_Line}</td>
+                                <td>${item.part_Number}</td>
+                                <td>${item.description}</td>
+                                <td>${item.qty}</td>
+                                <td>${item.lsd}</td>
+                                <td>${item.psd}</td>
+                                <td>${item.accQty}</td>
+                                <td>${item.balStock}</td>
+                                <td>${item.balASN}</td>
+                            </tr>
+                        `).join('');
+                        $('#summaryTable tbody').html(summaryRows);
+
+                        const wipRows = result.wipList.map(item => `
+                            <tr>
+                                <td>${item.partNumber}</td>
+                                <td>${item.description}</td>
+                                <td>${item.quantity}</td>
+                                <td>${item.current_OP}</td>
+                                <td>${item.current_WC}</td>
+                            </tr>
+                        `).join('');
+                        $('#wipTable tbody').html(wipRows);
+                    }
+                });
+            });
+
+
+        });
+
+        function formatDate(data) {
+            if (!data) return '';
+            const date = new Date(data);
+            return date.toLocaleDateString('id-ID');
+        }
+    </script>
+}
 
