@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "D:\\Collins\\Shiping\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\views\\plan\\indexshipmentplan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\views\\plan\\indexshipmentplan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\views\\plan\\indexportaldata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\views\\plan\\indexportaldata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -15,32 +11,16 @@
       "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\controllers\\planapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\views\\plan\\indexpreparedshipment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\views\\plan\\indexpreparedshipment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\models\\shipmentlogmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\models\\shipmentlogmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\data\\opsproddbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\data\\opsproddbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\models\\portalmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\models\\portalmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\controllers\\plancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\controllers\\plancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\wwwroot\\css\\portaldata.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\wwwroot\\css\\portaldata.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\wwwroot\\css\\shipment.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\wwwroot\\css\\shipment.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\views\\plan\\indexinpreparation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\views\\plan\\indexinpreparation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\views\\plan\\indexanalyze.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|solutionrelative:adminlte4\\views\\plan\\indexanalyze.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3EBC35B0-9BA3-41AA-8262-74F521D31E9B}|AdminLTE4\\FILog.csproj|d:\\collins\\shiping\\adminlte4\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -54,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 284,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,7 +42,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 2,
+              "Title": "IndexPreparedShipment.cshtml",
+              "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\Views\\Plan\\IndexPreparedShipment.cshtml",
+              "RelativeDocumentMoniker": "AdminLTE4\\Views\\Plan\\IndexPreparedShipment.cshtml",
+              "ToolTip": "D:\\Collins\\Shiping\\AdminLTE4\\Views\\Plan\\IndexPreparedShipment.cshtml",
+              "RelativeToolTip": "AdminLTE4\\Views\\Plan\\IndexPreparedShipment.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-19T03:42:30.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ShipmentLogModel.cs",
+              "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\Models\\ShipmentLogModel.cs",
+              "RelativeDocumentMoniker": "AdminLTE4\\Models\\ShipmentLogModel.cs",
+              "ToolTip": "D:\\Collins\\Shiping\\AdminLTE4\\Models\\ShipmentLogModel.cs",
+              "RelativeToolTip": "AdminLTE4\\Models\\ShipmentLogModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T01:21:56.858Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "AdminLTE4\\Views\\Shared\\_Layout.cshtml",
@@ -74,20 +79,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "IndexPortalData.cshtml",
               "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\Views\\Plan\\IndexPortalData.cshtml",
               "RelativeDocumentMoniker": "AdminLTE4\\Views\\Plan\\IndexPortalData.cshtml",
               "ToolTip": "D:\\Collins\\Shiping\\AdminLTE4\\Views\\Plan\\IndexPortalData.cshtml",
               "RelativeToolTip": "AdminLTE4\\Views\\Plan\\IndexPortalData.cshtml",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAAFsAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAswFgAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-15T03:02:02.529Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "OpsProdDbContext.cs",
               "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\Data\\OpsProdDbContext.cs",
               "RelativeDocumentMoniker": "AdminLTE4\\Data\\OpsProdDbContext.cs",
@@ -99,106 +104,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "PlanAPIController.cs",
               "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\Controllers\\PlanAPIController.cs",
               "RelativeDocumentMoniker": "AdminLTE4\\Controllers\\PlanAPIController.cs",
               "ToolTip": "D:\\Collins\\Shiping\\AdminLTE4\\Controllers\\PlanAPIController.cs",
               "RelativeToolTip": "AdminLTE4\\Controllers\\PlanAPIController.cs",
-              "ViewState": "AgIAAG0BAAAAAAAAAAAiwDIBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFgBAAAAAAAAAAAswI0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T01:59:27.108Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 268,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "IndexShipmentPlan.cshtml",
-              "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\Views\\Plan\\IndexShipmentPlan.cshtml",
-              "RelativeDocumentMoniker": "AdminLTE4\\Views\\Plan\\IndexShipmentPlan.cshtml",
-              "ToolTip": "D:\\Collins\\Shiping\\AdminLTE4\\Views\\Plan\\IndexShipmentPlan.cshtml",
-              "RelativeToolTip": "AdminLTE4\\Views\\Plan\\IndexShipmentPlan.cshtml",
-              "ViewState": "AgIAAGkBAAAAAAAAAAAAAHEBAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-16T01:07:56.935Z",
+              "WhenOpened": "2025-05-08T01:59:27.108Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PortalData.css",
-              "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\wwwroot\\css\\PortalData.css",
-              "RelativeDocumentMoniker": "AdminLTE4\\wwwroot\\css\\PortalData.css",
-              "ToolTip": "D:\\Collins\\Shiping\\AdminLTE4\\wwwroot\\css\\PortalData.css",
-              "RelativeToolTip": "AdminLTE4\\wwwroot\\css\\PortalData.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-05-15T09:34:45.463Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PlanController.cs",
-              "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\Controllers\\PlanController.cs",
-              "RelativeDocumentMoniker": "AdminLTE4\\Controllers\\PlanController.cs",
-              "ToolTip": "D:\\Collins\\Shiping\\AdminLTE4\\Controllers\\PlanController.cs",
-              "RelativeToolTip": "AdminLTE4\\Controllers\\PlanController.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAA4wMkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T02:08:46.421Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Shipment.css",
-              "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\wwwroot\\css\\Shipment.css",
-              "RelativeDocumentMoniker": "AdminLTE4\\wwwroot\\css\\Shipment.css",
-              "ToolTip": "D:\\Collins\\Shiping\\AdminLTE4\\wwwroot\\css\\Shipment.css",
-              "RelativeToolTip": "AdminLTE4\\wwwroot\\css\\Shipment.css",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-05-15T09:14:09.726Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IndexAnalyze.cshtml",
-              "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\Views\\Plan\\IndexAnalyze.cshtml",
-              "RelativeDocumentMoniker": "AdminLTE4\\Views\\Plan\\IndexAnalyze.cshtml",
-              "ToolTip": "D:\\Collins\\Shiping\\AdminLTE4\\Views\\Plan\\IndexAnalyze.cshtml",
-              "RelativeToolTip": "AdminLTE4\\Views\\Plan\\IndexAnalyze.cshtml",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAAAKsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-15T03:03:32.513Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PortalModel.cs",
-              "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\Models\\PortalModel.cs",
-              "RelativeDocumentMoniker": "AdminLTE4\\Models\\PortalModel.cs",
-              "ToolTip": "D:\\Collins\\Shiping\\AdminLTE4\\Models\\PortalModel.cs",
-              "RelativeToolTip": "AdminLTE4\\Models\\PortalModel.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA0wBQAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T03:13:36.67Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IndexInPreparation.cshtml",
-              "DocumentMoniker": "D:\\Collins\\Shiping\\AdminLTE4\\Views\\Plan\\IndexInPreparation.cshtml",
-              "RelativeDocumentMoniker": "AdminLTE4\\Views\\Plan\\IndexInPreparation.cshtml",
-              "ToolTip": "D:\\Collins\\Shiping\\AdminLTE4\\Views\\Plan\\IndexInPreparation.cshtml",
-              "RelativeToolTip": "AdminLTE4\\Views\\Plan\\IndexInPreparation.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-15T07:29:43.335Z"
             }
           ]
         }

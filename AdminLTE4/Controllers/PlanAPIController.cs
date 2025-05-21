@@ -29,14 +29,14 @@ namespace FILog.Controllers
                 {
                     var model = new MasterShipPlanModel
                     {
-                        
+
                         Part_Number = row.GetValueOrDefault("Part Number"),
                         Description = row.GetValueOrDefault("Description"),
                         Qty = TryParseDecimal(row.GetValueOrDefault("Qty")),
                         Customer = row.GetValueOrDefault("Customer"),
                         PSD = TryParseDateTime(row.GetValueOrDefault("PSD")),
                         COS = TryParseDecimal(row.GetValueOrDefault("COS")),
-                        Ttl_COS = TryParseDecimal(row.GetValueOrDefault("Ttl_COS")),                      
+                        Ttl_COS = TryParseDecimal(row.GetValueOrDefault("Ttl_COS")),
                     };
 
                     newData.Add(model);
@@ -219,7 +219,7 @@ namespace FILog.Controllers
             return Json(new
             {
                 draw = draw,
-                recordsTotal = recordsFiltered, 
+                recordsTotal = recordsFiltered,
                 recordsFiltered = recordsFiltered,
                 data = data
             });
@@ -260,13 +260,13 @@ namespace FILog.Controllers
 
             var materialList = _context.MaterialMaster
                 .Where(x => x.Part_Number == partNumber)
-                .OrderBy(x => x.LSD) 
+                .OrderBy(x => x.LSD)
                 .ToList();
 
             decimal accQty = 0;
             var summaryList = materialList.Select(x =>
             {
-                accQty += x.Qty ?? 0; 
+                accQty += x.Qty ?? 0;
                 decimal balStock = stockQty - accQty - preparedQty;
 
                 decimal balASN = 0;
@@ -287,7 +287,7 @@ namespace FILog.Controllers
                     PSD = x.PSD?.ToString("yyyy-MM-dd"),
                     AccQty = accQty,
                     BalStock = balStock,
-                    BalASN = balASN   
+                    BalASN = balASN
                 };
             }).ToList();
 
@@ -322,7 +322,6 @@ namespace FILog.Controllers
 
             IQueryable<PortalModel> query = _context.PortalModels;
 
-            // Terapkan filter hanya jika field tidak kosong
             if (!string.IsNullOrEmpty(customer) && customer != "Pilih...")
             {
                 query = query.Where(m => m.Customer.Contains(customer));
@@ -419,6 +418,60 @@ namespace FILog.Controllers
             }
         }
 
+        [HttpGet("Shipment/Schedule")]
+        public IActionResult GetShipmentSummary()
+        {
+            var today = DateTime.Today;
+            var endOfWeek = today.AddDays(6 - (int)today.DayOfWeek);
+
+            var groupedData = _context.ShipmentLogModels
+            .Where(x => x.Plan_Ship_Date != null && x.Status != "shipped")
+            .ToList() 
+            .GroupBy(x => x.Week)
+            .Select(g => new
+            {
+                Week = g.Key,
+                Summary = g
+                    .GroupBy(x => x.Delivery_Point)
+                    .Select(dp =>
+                    {
+                        var today = DateTime.Today;
+                        var endOfWeek = today.AddDays(6 - (int)today.DayOfWeek);
+
+                        var todayMax = dp
+                            .Where(x => x.Plan_Ship_Date == today)
+                            .Max(x => (decimal?)x.Ctn_Number) ?? 0;
+
+                        var next = dp
+                            .Where(x => x.Plan_Ship_Date > today && x.Plan_Ship_Date <= endOfWeek)
+                            .OrderBy(x => x.Plan_Ship_Date)
+                            .FirstOrDefault();
+
+                        return new
+                        {
+                            Destination = dp.Key,
+                            TodayBox = todayMax,
+                            NextDay = next?.Plan_Ship_Date?.ToString("dddd") ?? "-",
+                            NextBox = next?.Ctn_Number ?? 0
+                        };
+                    })
+                    .ToList()
+            })
+            .ToList();
+
+            return Json(groupedData);
+        }
+        [HttpGet("Shipment/GetWeekList")]
+        public IActionResult GetWeekList()
+        {
+            var weeks = _context.ShipmentLogModels
+                .Where(x => !string.IsNullOrEmpty(x.Week))
+                .Select(x => x.Week)
+                .Distinct()
+                .OrderBy(x => x)
+                .ToList();
+            return Json(weeks);
+        }
 
     }
 }

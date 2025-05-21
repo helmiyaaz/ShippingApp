@@ -6,98 +6,86 @@
 
 <link rel="stylesheet" href="~/css/PreparedShipment.css">
 
-    @await Html.PartialAsync("_ShipmentPlanTabs")
-    <div class="card">
-        <div class="card-body">
-        <table class="table table-striped">
+@await Html.PartialAsync("_ShipmentPlanTabs")
+<div class="card">
+    <div class="card-body">
+        <div class="mb-3">
+            <label for="weekDropdown" class="form-label fs-5">Select Week</label>
+            <select id="weekDropdown" class="form-select w-25"></select>
+        </div>
+
+        <table class="table table-striped" id="shipmentTable">
             <thead>
                 <tr>
-                    <th rowspan="2" class="align-middle fs-2">Wk 6</th>
-                    <th rowspan="2" class="align-middle fs-2"></th>
-                    <th rowspan="2" class="align-middle fs-2">Today Shipment</th>
-                    <th colspan="2" class="fs-3"><center> Next Shipment</center></th>
+                    <th rowspan="2" class="align-middle fs-5">Destination</th>
+                    <th rowspan="2" class="align-middle fs-5"></th>
+                    <th rowspan="2" class="align-middle fs-5">Today Shipment</th>
+                    <th colspan="2" class="text-center fs-6">Next Shipment</th>
                 </tr>
                 <tr>
-                    <th class="p-8"> <center> When </center></th>
-                    <th class="p-8"> <center> Boxes </center></th>
+                    <th class="text-center">When</th>
+                    <th class="text-center">Boxes</th>
                 </tr>
-
             </thead>
             <tbody>
-                <tr>
-                    <td>Wolves - 3PL</td>
-                    <td>
-                        <i class="bi bi-arrow-right-circle"></i>
-                    </td>
-                    <td>-</td>
-                    <td>Friday</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Wolves - Navs</td>
-                    <td>
-                        <i class="bi bi-arrow-right-circle"></i>
-                    </td>
-                    <td>
-                        -
-                    </td>
-                </tr>
-                <tr>
-                    <td>SOA</td>
-                    <td>
-                        <i class="bi bi-arrow-right-circle"></i>
-                    </td>
-                    <td>-</td>
-                    <td>Friday</td>
-                    <td>36</td>
-                </tr>
-                <tr>
-                    <td>Vernon</td>
-                    <td>
-                        <i class="bi bi-arrow-right-circle"></i>
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>CTG</td>
-                    <td>
-                        <i class="bi bi-arrow-right-circle"></i>
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>Bedok</td>
-                    <td>
-                        <i class="bi bi-arrow-right-circle"></i>
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>Bangalore</td>
-                    <td>
-                        <i class="bi bi-arrow-right-circle"></i>
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>RLC</td>
-                    <td>
-                        <i class="bi bi-arrow-right-circle"></i>
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
             </tbody>
         </table>
-
-        </div>
     </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '/Shipment/GetWeekList',
+                method: 'GET',
+                success: function (weeks) {
+                    var $dropdown = $('#weekDropdown');
+                    $dropdown.empty();
+                    weeks.forEach(function (week) {
+                        $dropdown.append(`<option value="${week}">${week}</option>`);
+                    });
+
+                    if (weeks.length > 0) {
+                        $dropdown.val(weeks[0]).trigger('change');
+                    }
+                }
+            });
+
+        function loadShipmentSummary(week) {
+            $.ajax({
+                url: '/Shipment/Schedule',
+                method: 'GET',
+                success: function (data) {
+                    const selectedWeek = data.find(w => w.week === week);
+                    const tbody = $('#shipmentTable tbody');
+                    tbody.empty();
+
+                    if (selectedWeek && selectedWeek.summary.length > 0) {
+                        selectedWeek.summary.forEach(row => {
+                            tbody.append(`
+                                <tr>
+                                    <td>${row.destination}</td>
+                                    <td><i class="bi bi-arrow-right-circle"></i></td>
+                                    <td>${row.todayBox}</td>
+                                    <td>${row.nextDay}</td>
+                                    <td>${row.nextBox}</td>
+                                </tr>
+                            `);
+                        });
+                    } else {
+                        tbody.append('<tr><td colspan="5">No data available for this week.</td></tr>');
+                    }
+                }
+            });
+        }
+
+            $('#weekDropdown').on('change', function () {
+            loadShipmentSummary($(this).val());
+        });
+
+
+        
+        });
+    </script>
+}

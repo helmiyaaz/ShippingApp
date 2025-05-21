@@ -373,6 +373,30 @@
           }
         }
       }
+    },
+    "/Shipment/Schedule": {
+      "get": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Shipment/GetWeekList": {
+      "get": {
+        "tags": [
+          "PlanAPI"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {

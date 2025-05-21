@@ -47,6 +47,26 @@
   },
   {
     "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "GetWeekList",
+    "RelativePath": "Shipment/GetWeekList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "GetShipmentSummary",
+    "RelativePath": "Shipment/Schedule",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FILog.Controllers.PlanAPIController",
     "Method": "GetCustomers",
     "RelativePath": "ShipmentLog/GetCustomers",
     "HttpMethod": "GET",
