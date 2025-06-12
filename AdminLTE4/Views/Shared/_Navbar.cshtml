@@ -3,44 +3,24 @@
 
 <!--begin::Header-->
 <nav class="app-header navbar navbar-expand">
-    <!--begin::Container-->
     <div class="container-fluid">
-        <!--begin::Start Navbar Links-->
-        <ul class="navbar-nav">
+        <!-- START: Left Side (Sidebar toggle + Profile) -->
+        <ul class="navbar-nav d-flex align-items-center">
             <li class="nav-item">
                 <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
                     <i class="bi bi-list"></i>
                 </a>
             </li>
-        </ul>
-        <ul class="navbar-nav ms-auto align-items-center d-flex">
-            <li class="nav-item d-flex align-items-center">
-                <h2 class="ms-2 d-none d-md-inline">Shipping Apps</h2>
-                <img src="../../dist/NewFolder/airplane2.png"
-                     class="user-image m-2"
-                     alt="User Image"
-                     width="40" height="40" />
-            </li>
-        </ul>
 
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-lte-toggle="fullscreen">
-                    <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i>
-                    <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none"></i>
-                </a>
-            </li>
-            <!--end::Fullscreen Toggle-->
-            <!--begin::User Menu Dropdown-->
-            <li class="nav-item dropdown user-menu">
+            <!-- Profile Menu -->
+            <li class="nav-item dropdown user-menu d-flex align-items-center ms-3">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <img src="../../dist/assets/img/user2-160x160.jpg"
                          class="user-image rounded-circle shadow"
                          alt="User Image" />
                     <span class="d-none d-md-inline">Alexander Pierce</span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                    <!--begin::User Image-->
+                <ul class="dropdown-menu dropdown-menu-lg">
                     <li class="user-header text-bg-primary">
                         <img src="../../dist/assets/img/user2-160x160.jpg"
                              class="rounded-circle shadow"
@@ -50,30 +30,87 @@
                             <small>Member since Nov. 2023</small>
                         </p>
                     </li>
-                    <!--end::User Image-->
-                    <!--begin::Menu Body-->
                     <li class="user-body">
-                        <!--begin::Row-->
                         <div class="row">
                             <div class="col-4 text-center"><a href="#">Followers</a></div>
                             <div class="col-4 text-center"><a href="#">Sales</a></div>
                             <div class="col-4 text-center"><a href="#">Friends</a></div>
                         </div>
-                        <!--end::Row-->
                     </li>
-                    <!--end::Menu Body-->
-                    <!--begin::Menu Footer-->
                     <li class="user-footer">
                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                         <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
                     </li>
-                    <!--end::Menu Footer-->
                 </ul>
             </li>
-            <!--end::User Menu Dropdown-->
         </ul>
-        <!--end::End Navbar Links-->
+
+        <!-- CENTER: App Title -->
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item d-flex align-items-center">
+                <h2 class="ms-2 mb-0 d-none d-md-inline">Shipping Apps</h2>
+                <img src="../../dist/shippingAssets/airplane2.png"
+                     class="user-image m-2"
+                     alt="User Image"
+                     width="40" height="40" />
+            </li>
+        </ul>
+
+        <!-- RIGHT: Fullscreen + Theme Switch -->
+        <ul class="navbar-nav align-items-center">
+            <li class="nav-item ms-3 d-flex align-items-center">
+                <div class="form-check form-switch d-flex align-items-center m-0">
+                    <input class="form-check-input" type="checkbox" id="themeSwitch" onclick="toggleTheme()" style="width: 40px; height: 22px;" />
+                    <label class="form-check-label ms-2" for="themeSwitch" style="margin-bottom: 0;">
+                        <i id="themeIcon" class="bi bi-moon-stars-fill fs-5"></i>
+                    </label>
+                </div>
+            </li>            
+            <!-- Fullscreen toggle -->
+            <li class="nav-item me-2 ms-4">
+                <a class="nav-link" href="#" data-lte-toggle="fullscreen">
+                    <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i>
+                    <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none"></i>
+                </a>
+            </li>
+
+            <!-- Dark Mode Switch -->
+        </ul>
     </div>
-    <!--end::Container-->
-</nav>
-<!--end::Header-->
+</nav><!--end::Header-->
+
+<script>
+    function toggleTheme() {
+        const htmlEl = document.documentElement;
+        const isDark = htmlEl.getAttribute("data-bs-theme") === "dark";
+        const themeIcon = document.getElementById("themeIcon");
+
+        if (isDark) {
+            htmlEl.setAttribute("data-bs-theme", "light");
+            themeIcon.classList.remove("bi-sun-fill");
+            themeIcon.classList.add("bi-moon-stars-fill");
+        } else {
+            htmlEl.setAttribute("data-bs-theme", "dark");
+            themeIcon.classList.remove("bi-moon-stars-fill");
+            themeIcon.classList.add("bi-sun-fill");
+        }
+
+        // Optional: Simpan preferensi ke localStorage
+        localStorage.setItem("theme", htmlEl.getAttribute("data-bs-theme"));
+    }
+
+    // Saat halaman dimuat, gunakan preferensi dari localStorage
+    document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-bs-theme", savedTheme);
+
+        const themeIcon = document.getElementById("themeIcon");
+        const themeSwitch = document.getElementById("themeSwitch");
+
+        if (savedTheme === "dark") {
+            themeIcon.classList.remove("bi-moon-stars-fill");
+            themeIcon.classList.add("bi-sun-fill");
+            themeSwitch.checked = true;
+        }
+    });
+</script>

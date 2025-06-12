@@ -48,6 +48,7 @@ wwwroot\dist\assets\img\user5-128x128.jpg
 wwwroot\dist\assets\img\user6-128x128.jpg
 wwwroot\dist\assets\img\user7-128x128.jpg
 wwwroot\dist\assets\img\user8-128x128.jpg
+wwwroot\dist\shippingAssets\airplane2.png
 wwwroot\favicon.ico
 wwwroot\js\adminlte\adminlte.js
 wwwroot\js\adminlte\adminlte.js.map

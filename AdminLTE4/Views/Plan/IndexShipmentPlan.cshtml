@@ -14,10 +14,10 @@
     <div class="card-body ">
         <button class="btn btn-secondary " id="btnPreview"><i class="bi bi-upload me-2"></i>Mass Upload</button>
             <input type="file" id="excelFile" class="form-control d-none" />
-        <button class="btn btn-secondary" id="btnPreviewMonthly">Monthly Plan</button>
+        <button class="btn btn-secondary" id="btnPreviewMonthly"><i class="bi bi-upload me-2"></i>Monthly Plan</button>
             <input type="file" id="excelFileMonthly" class="form-control d-none" />
-        <button class="btn btn-secondary" id="btnNewAdd" >New Add</button>
-        <button class="btn btn btn-danger">Reset</button>
+        <button class="btn btn-secondary" id="btnNewAdd"><i class="bi bi-plus-lg me-2"></i>New Add</button>
+        <button class="btn btn btn-danger" id="btnReset" >Reset</button>
         <button class="btn btn-secondary" id="btnExport"><i class="bi bi-file-earmark-excel me-2"></i>Excel</button>
       <div class=" mt-2">
         <div class="mt-2">
@@ -62,9 +62,10 @@
                 </div>
 
                 <div class="right-section">
-                    <span><strong>Total Line:</strong> 148</span>
-                    <span class="total-cost"><strong>Total COS:</strong> $1,454,188</span>
+                    <span class="total-line"><strong>Total Line:</strong> <span id="lineCount">Loading...</span></span>
+                    <span class="total-cost"><strong>Total COS:</strong> $<span id="cosTotal">Loading...</span></span>
                 </div>
+
             </div>
       </div>
     </div>   
@@ -364,7 +365,7 @@
                      },
                      success: function (res) {
                          previewData = res;
-                         $('#btnPreview').prop('disabled', false).text('Upload');
+                         $('#btnPreview').prop('disabled', false);
 
                          if (res.length === 0) {
                              Swal.fire("Info", "File tidak memiliki data.", "info");
@@ -391,7 +392,7 @@
                         modal.show();
                      },
                      error: function () {
-                         $('#btnPreview').prop('disabled', false).text('Upload');
+                         $('#btnPreview').prop('disabled', false);
                          Swal.fire("Error", "Gagal membaca file!", "error");
                      }
                  });
@@ -546,6 +547,29 @@
                     }
                 });
             });
+        });
+
+        $.ajax({
+            url: '/ShipmentPlan/GetTtlCos',
+            method: 'GET',
+            success: function (data) {
+                var formattedCos = parseFloat(data.totalCos).toLocaleString('en-US');
+
+                $('#lineCount').text(data.totalLine);
+                $('#cosTotal').text(formattedCos);
+            },
+            error: function (xhr, status, error) {
+                console.error('Gagal mengambil data:', error);
+                $('#lineCount').text('Error');
+                $('#cosTotal').text('Error');
+            }
+        });
+
+        $("#btnReset").on('click', function () {
+            $('#btnPreview').prop('disabled', true);
+            $('#btnPreviewMonthly').prop('disabled', true);
+            $('#btnNewAdd').prop('disabled', true);
+
         });
 
             

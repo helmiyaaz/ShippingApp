@@ -57,7 +57,7 @@
   },
   {
     "ContainingType": "FILog.Controllers.PlanAPIController",
-    "Method": "GetShipmentSummary",
+    "Method": "GetCurrentWeekShipmentSummary",
     "RelativePath": "Shipment/Schedule",
     "HttpMethod": "GET",
     "IsController": true,
@@ -112,7 +112,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "ContainingType": "FILog.Controllers.PlanAPIController",
     "Method": "CreateData",
     "RelativePath": "ShipmentPlan/CreateData",
     "HttpMethod": "POST",
@@ -128,7 +128,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "ContainingType": "FILog.Controllers.PlanAPIController",
     "Method": "Delete",
     "RelativePath": "ShipmentPlan/Delete/{id}",
     "HttpMethod": "DELETE",
@@ -144,7 +144,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "ContainingType": "FILog.Controllers.PlanAPIController",
     "Method": "ExportExcel",
     "RelativePath": "ShipmentPlan/ExportExcel",
     "HttpMethod": "GET",
@@ -154,7 +154,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "ContainingType": "FILog.Controllers.PlanAPIController",
     "Method": "GetById",
     "RelativePath": "ShipmentPlan/GetById/{id}",
     "HttpMethod": "GET",
@@ -170,7 +170,17 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "ContainingType": "FILog.Controllers.PlanAPIController",
+    "Method": "GetCosSums",
+    "RelativePath": "ShipmentPlan/GetTtlCos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FILog.Controllers.PlanAPIController",
     "Method": "ImportExcel",
     "RelativePath": "ShipmentPlan/ImportExcel",
     "HttpMethod": "POST",
@@ -187,7 +197,7 @@
   },
   {
     "ContainingType": "FILog.Controllers.PlanAPIController",
-    "Method": "ImportExcel",
+    "Method": "ImportExcelMonthly",
     "RelativePath": "ShipmentPlan/ImportExcelMonthly",
     "HttpMethod": "POST",
     "IsController": true,
@@ -202,7 +212,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "ContainingType": "FILog.Controllers.PlanAPIController",
     "Method": "PreviewExcel",
     "RelativePath": "ShipmentPlan/PreviewExcel",
     "HttpMethod": "POST",
@@ -228,7 +238,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "ContainingType": "FILog.Controllers.PlanAPIController",
     "Method": "GetAll",
     "RelativePath": "ShipmentPlan/ReadData",
     "HttpMethod": "GET",
@@ -238,7 +248,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AdminLTE4.Controllers.PlanController",
+    "ContainingType": "FILog.Controllers.PlanAPIController",
     "Method": "Update",
     "RelativePath": "ShipmentPlan/Update/{id}",
     "HttpMethod": "PUT",

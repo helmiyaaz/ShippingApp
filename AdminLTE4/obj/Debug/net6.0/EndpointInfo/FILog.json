@@ -14,7 +14,7 @@
     "/ShipmentPlan/ReadData": {
       "get": {
         "tags": [
-          "Plan"
+          "PlanAPI"
         ],
         "responses": {
           "200": {
@@ -26,7 +26,7 @@
     "/ShipmentPlan/CreateData": {
       "post": {
         "tags": [
-          "Plan"
+          "PlanAPI"
         ],
         "requestBody": {
           "content": {
@@ -57,7 +57,7 @@
     "/ShipmentPlan/Update/{id}": {
       "put": {
         "tags": [
-          "Plan"
+          "PlanAPI"
         ],
         "parameters": [
           {
@@ -99,7 +99,7 @@
     "/ShipmentPlan/Delete/{id}": {
       "delete": {
         "tags": [
-          "Plan"
+          "PlanAPI"
         ],
         "parameters": [
           {
@@ -122,7 +122,7 @@
     "/ShipmentPlan/GetById/{id}": {
       "get": {
         "tags": [
-          "Plan"
+          "PlanAPI"
         ],
         "parameters": [
           {
@@ -145,7 +145,7 @@
     "/ShipmentPlan/PreviewExcel": {
       "post": {
         "tags": [
-          "Plan"
+          "PlanAPI"
         ],
         "requestBody": {
           "content": {
@@ -177,7 +177,7 @@
     "/ShipmentPlan/ImportExcel": {
       "post": {
         "tags": [
-          "Plan"
+          "PlanAPI"
         ],
         "requestBody": {
           "content": {
@@ -208,7 +208,7 @@
     "/ShipmentPlan/ExportExcel": {
       "get": {
         "tags": [
-          "Plan"
+          "PlanAPI"
         ],
         "responses": {
           "200": {
@@ -285,6 +285,18 @@
               "type": "string"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ShipmentPlan/GetTtlCos": {
+      "get": {
+        "tags": [
+          "PlanAPI"
         ],
         "responses": {
           "200": {

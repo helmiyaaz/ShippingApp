@@ -205,6 +205,10 @@
       "PackagePath": "staticwebassets\\dist\\assets\\img\\user8-128x128.jpg"
     },
     {
+      "Id": "D:\\Collins\\Shiping\\AdminLTE4\\wwwroot\\dist\\shippingAssets\\airplane2.png",
+      "PackagePath": "staticwebassets\\dist\\shippingAssets\\airplane2.png"
+    },
+    {
       "Id": "D:\\Collins\\Shiping\\AdminLTE4\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

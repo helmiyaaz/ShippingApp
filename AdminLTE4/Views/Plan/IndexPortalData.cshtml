@@ -5,14 +5,13 @@
 }
 <link rel="stylesheet" href="~/css/PortalData.css">
 
-
-   @await Html.PartialAsync("_ShipmentPlanTabs")
-
+@await Html.PartialAsync("_ShipmentPlanTabs")
 
 <div class="container mt-3">
+
     <!-- Filter Section -->
     <div class="container-box">
-        <div class="row">        
+        <div class="row">         
             <div class="col-md-3">
                 <label class="form-label">Customer:</label>
                 <select class="form-select" id="CustomerFilter">
@@ -31,7 +30,7 @@
         <table class="table table-bordered table-sm mt-8" id="portalTable">
             <thead>
                 <tr class="table-dark">
-                    <th>Part Number</th>
+                    <th>Part Number</th>x
                     <th>PO</th>
                     <th>Sch Line</th>
                     <th>Qty</th>
@@ -88,10 +87,10 @@
                     { data: 'qty' },
                     { data: 'customer' },
                     { data: 'asn' },
-                    { data: null },
+                    { data: 'req_Date', render: formatDate },                    
                     { data: 'commit_Date', render: formatDate },
                     { data: 'otD_Date', render: formatDate },
-                    { data: null },
+                    { data: 'remarks' },
                 ]
             });
 
@@ -136,11 +135,12 @@
                 });
             });
 
-            $('#btnClearFilter').on('click', function () {       
-                $('#CustomerFilter').val(''); 
+            $('#btnClearFilter').on('click', function () {
+                $('#CustomerFilter').val('');
 
                 $('#portalTable').DataTable().ajax.reload();
             });
+
 
         
         });
